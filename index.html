@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Marine Perrin – E‑commerce Operations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Elegant fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #111111;
+      --accent: #ff7a00; /* Hermès orange */
+      --bg: #faf9f7;
+      --text: #111111;
+      --muted: #6b6b6b;
+      --card: #ffffff;
+      --border: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Lora", serif;
+    }
+
+    h1, h2, h3, .logo, .hero-role, .section-title {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Saddle-stitch luxury frame */
+    .page {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 32px 24px 64px;
+      background: var(--card);
+      border: 4px dashed var(--accent);
+      border-radius: 18px;
+      position: relative;
+    }
+
+    /* Minimalist horse icon (pure CSS) */
+    .horse-icon {
+      width: 60px;
+      height: 40px;
+      border: 3px solid var(--accent);
+      border-radius: 50% 50% 40% 40%;
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      transform: rotate(-10deg);
+    }
+    .horse-icon::before {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 20px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      top: -18px;
+      left: 10px;
+      transform: rotate(20deg);
+    }
+    .horse-icon::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      bottom: -10px;
+      right: -10px;
+    }
+
+    /* Decorative equestrian separator */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--accent),
+        var(--accent) 6px,
+        transparent 6px,
+        transparent 12px
+      );
+      margin: 24px 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--accent);
+      position: relative;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 28px;
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    nav a {
+      margin-left: 16px;
+      font-size: 16px;
+      color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .hero-role {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .btn-primary {
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      background: #fff2e6;
+      color: #b45309;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .hero-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-metric-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-metric-value {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero-metric-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .card-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card-list {
+      font-size: 15px;
+      margin-left: 16px;
+    }
+
+    .contact-section {
+      text-align: center;
+      padding: 24px 16px;
+      background: var(--primary);
+      color: white;
+      border-radius: 16px;
+    }
+
+    .contact-section p {
+      color: #e5e5e5;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .contact-info {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Horse icon -->
+    <div class="horse-icon"></div>
+
+    <header>
+      <div>
+        <div class="logo">MARINE PERRIN</div>
+        <div class="tagline">E‑commerce · Operations · Risk & Fraud</div>
+      </div>
+      <nav>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">Ensuring operational excellence across risk, logistics, payments and omnichannel e‑commerce.</h1>
+
+        <div class="hero-role">E‑commerce Operations Officer – Luxury & Premium Retail</div>
+
+        <p class="hero-text">
+          With strong FMCG experience at Nestlé and a background in category management and procurement,
+          I bring rigor, analytical thinking and operational discipline. I am experienced in order validation,
+          fraud detection, logistics coordination, payment monitoring and stock supervision — all essential
+          pillars of a seamless luxury e‑commerce experience.
+        </p>
+
+        <a href="CV-MARINE.pdf" class="btn-primary" download>Download CV (PDF)</a>
+
+        <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Contact me
+        </button>
+
+        <div class="hero-highlights">
+          <span class="pill">Risk & Fraud Analysis</span>
+          <span class="pill">Transport & Logistics Monitoring</span>
+          <span class="pill">Payments & Refunds</span>
+          <span class="pill">Stock Supervision</span>
+          <span class="pill">Cegid & SAP</span>
+          <span class="pill">Fluent English (C2)</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-metric-label">Profile snapshot</div>
+        <div class="hero-metric-value">E‑commerce Operations</div>
+        <div class="hero-metric-sub">
+          Risk management, fraud detection, transport & logistics follow‑up, payment monitoring and stock accuracy.
+        </div>
+        <div class="hero-badges">
+          <span>• Cegid</span>
+          <span>• Magento</span>
+          <span>• SAP ERP</span>
+          <span>• Data analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="grid grid-3">
+
+        <div class="card">
+          <div class="card-title">Category Manager NESCAFÉ</div>
+          <div class="card-subtitle">Nestlé France (2025–2026)</div>
+          <ul class="card-list">
+            <li>Managed a €4M budget with strong operational rigor and cross‑team coordination.</li>
+            <li>Analyzed performance data and ensured flawless execution across retail partners.</li>
+            <li>Worked closely with supply chain and finance to validate plans and resolve issues.</li>
+            <li>Designed merchandising strategies and optimized product visibility.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Strategic Buyer</div>
+          <div class="card-subtitle">Nestlé France (2024–2025)</div>
+          <ul class="card-list">
+            <li>Led 15 tenders (€100K–€1.5M) with strong compliance and risk assessment.</li>
+            <li>Coordinated with IT, logistics and finance to resolve operational issues.</li>
+            <li>Managed supplier performance and ensured process reliability.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Assistant Category Manager</div>
+          <div class="card-subtitle">Nestlé France (2024)</div>
+          <ul class="card-list">
+            <li>Produced weekly and monthly performance reports for internal stakeholders.</li>
+            <li>Redesigned the HOURA Drive interface (UX, testing, validation).</li>
+            <li>Conducted competitive analysis and contributed to planogram creation.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Marketing & Sales Administration Assistant</div>
+          <div class="card-subtitle">Filorga – Colgate Group (2023)</div>
+          <ul class="card-list">
+            <li>Coordinated stock levels for 120 pharmacies and resolved delivery issues.</li>
+            <li>Managed sales workflows and administrative processes.</li>
+            <li>Exposure to premium retail standards and client expectations.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Operational Skills</h2>
+
+      <div class="grid grid-3">
+
+        <div class="card">
+          <div class="card-title">E‑commerce Operations</div>
+          <ul class="card-list">
+            <li>Order validation & fraud detection</li>
+            <li>Transport & logistics incident management</li>
+            <li>Payment monitoring & refunds</li>
+            <li>Stock supervision & discrepancy analysis</li>
+            <li>Omnichannel coordination</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Tools & Technologies</div>
+          <ul class="card-list">
+            <li>Cegid · Magento</li>
+            <li>SAP ERP · Power BI</li>
+            <li>Google Analytics · SEO basics</li>
+            <li>HTML/CSS · JavaScript (basics)</li>
+            <li>Excel & PowerPoint (advanced)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Soft Skills</div>
+          <ul class="card-list">
+            <li>Rigor & attention to detail</li>
+            <li>Premium client service</li>
+            <li>Analytical mindset</li>
+            <li>Problem‑solving</li>
+            <li>Fluent English (C2)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+
+      <div class="grid grid-3">
+        <div class="card"><div class="card-title">Master 2 – Innovative Project Management</div><div class="card-subtitle">Rennes School of Business</div></div>
+        <div class="card"><div class="card-title">Master 1 – Marketing & Commerce</div><div class="card-subtitle">Rennes School of Business</div></div>
+        <div class="card"><div class="card-title">Erasmus Exchange</div><div class="card-subtitle">Technological University of Dublin</div></div>
+        <div class="card"><div class="card-title">Bachelor – GlobalTech & Cybersecurity</div><div class="card-subtitle">Rennes School of Business</div></div>
+        <div class="card"><div class="card-title">Preparatory Class – Science Track</div><div class="card-subtitle">Lycée Ampère</div></div>
+        <div class="card"><div class="card-title">Scientific Baccalaureate – Highest Honors</div><div class="card-subtitle">Lycée Daudet</div></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <h2 class="section-title" style="color:white;">Contact</h2>
+      <p>
+        Available immediately for an E‑commerce Operations Officer position in a luxury environment.
+      </p>
+      <div class="contact-info">
+        Email : <a href="mailto:perrin.marinelaure@gmail.com">perrin.marinelaure@gmail.com</a><br />
+        Phone : +33 6 82 33 52 08<br />
+        LinkedIn : <a href="https://www.linkedin.com/in/marine-perrin-920197213" target="_blank">/in/marine-perrin</a>
+      </div>
+      <a href="CV-MARINE.pdf" class="btn-primary" download>Download CV (PDF)</a>
+    </section>
+
+    <footer>
+      © Marine Perrin – E‑commerce Operations
+    </footer>
+
+  </div>
+</body>
+</html>
